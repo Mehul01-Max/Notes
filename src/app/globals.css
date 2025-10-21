@@ -253,3 +253,7 @@
     50% { transform: translateY(-10px); }
   }
 }
+
+html, body {
+  overscroll-behavior: none;
+}
