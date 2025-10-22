@@ -6,7 +6,7 @@ import heroImage from "@/assets/hero-bg.jpg";
 import NotesCard from "@/components/NotesCard";
 import Link from "next/link";
 import { useNotes } from "@/lib/useNotes";
-function page() {
+function Page() {
   const { notes } = useNotes();
   return (
     <div>
@@ -67,4 +67,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

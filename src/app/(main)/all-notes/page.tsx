@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import { useNotes } from "@/lib/useNotes";
 import NotesCard from "@/components/NotesCard";
-function page() {
+function Page() {
   const { notes } = useNotes();
   return (
     <div className="flex flex-col gap-8 p-8">
@@ -36,4 +36,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

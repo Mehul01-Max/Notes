@@ -5,7 +5,6 @@ import { ArrowLeft, Hash, Save, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import MDEditor from "@uiw/react-md-editor";
-import { useAuthToken } from "@/lib/token";
 import { useNotes } from "@/lib/useNotes";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -15,7 +14,6 @@ function Page() {
   const [title, setTitle] = useState("");
   const [value, setValue] = useState<string | undefined>("");
   const [isSaving, setIsSaving] = useState(false);
-  const token = useAuthToken();
   const router = useRouter();
   const { addNote } = useNotes();
   const save = async () => {

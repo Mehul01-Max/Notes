@@ -1,5 +1,5 @@
 export function timeAgo(input: string | Date | number): string {
-  const date = new Date(input as any);
+  const date = input instanceof Date ? input : new Date(input);
   if (isNaN(date.getTime())) return "invalid date";
 
   const diffMs = Date.now() - date.getTime();

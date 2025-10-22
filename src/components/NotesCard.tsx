@@ -1,6 +1,5 @@
 import React from "react";
 import { timeAgo } from "@/lib/timeAgo";
-import { create } from "domain";
 type NotesCardProps = {
   title: string;
   tags?: string[];
