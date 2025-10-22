@@ -1,4 +1,4 @@
-// app/auth/layout.tsx
+"use client";
 import React from "react";
 import heroImage from "@/assets/hero-bg.jpg";
 import logo from "@/assets/logo.png";

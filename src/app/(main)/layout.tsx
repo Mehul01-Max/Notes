@@ -12,11 +12,11 @@ import { Button } from "@/components/ui/button";
 import React, { useState } from "react";
 import Link from "next/link";
 import { SignedIn, UserButton } from "@clerk/nextjs";
-
+import logo from "@/assets/logo.png";
+import { usePathname } from "next/navigation";
 export default function Layout({ children }: { children: React.ReactNode }) {
-  // A single state to control the sidebar's visibility on all screen sizes.
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
+  const pathname = usePathname();
   const navigationList = [
     { name: "Dashboard", icon: <House />, link: "/" },
     { name: "All Notes", icon: <NotebookText />, link: "/all-notes" },
@@ -26,10 +26,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   ];
 
   return (
-    <div className="flex h-screen bg-gray-900 text-white">
+    <div className="flex h-screen  text-white">
       {/* Backdrop: Only appears on mobile when the sidebar is open */}
       <div
-        className={`fixed inset-0 bg-black/60 z-10 md:hidden ${
+        className={`fixed inset-0 bg-black/60 z-100 md:hidden ${
           isSidebarOpen ? "block" : "hidden"
         }`}
         onClick={() => setIsSidebarOpen(false)}
@@ -39,7 +39,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <div
         className={`
           bg-[#0c0e12] flex flex-col justify-between p-2 h-full
-          transition-all duration-300 ease-in-out z-20
+          transition-all duration-300 ease-in-out z-200
           absolute md:relative w-72 overflow-x-hidden
           ${
             isSidebarOpen
@@ -48,17 +48,31 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           }
         `}
       >
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 items-start">
           {/* Header */}
           <div className="flex gap-2 items-center px-2 py-2">
-            <div className="bg-[#9A69F1] h-[40px] w-[40px] rounded-full flex-shrink-0"></div>
+            <div
+              className="w-[40px] h-[40px] rounded-xl flex items-center justify-center flex-shrink-0"
+              style={{
+                background: "var(--gradient-primary)",
+                boxShadow: "var(--shadow-glow)",
+              }}
+            >
+              <img src={logo.src} alt="Logo" className="w-8 h-8" />
+            </div>
             <div
               className={`whitespace-nowrap transition-opacity duration-200 ${
                 isSidebarOpen ? "opacity-100 delay-200" : "opacity-0"
               }`}
             >
-              <div className="text-white text-lg">Zettelkasten</div>
-              <div className="text-[#898F98] text-md">Knowledge Graph</div>
+              {isSidebarOpen && (
+                <>
+                  <div className="text-white text-lg">Zettelkasten</div>
+                  <div className="text-[#898F98] text-md">
+                    Knowledge Graph
+                  </div>{" "}
+                </>
+              )}
             </div>
           </div>
 
@@ -68,31 +82,43 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               isSidebarOpen ? "opacity-100 delay-200" : "opacity-0"
             }`}
           >
-            <div className="text-[#898F98] rounded-lg px-2 py-2">
+            <div className={`text-[#898F98] rounded-lg px-2 py-2`}>
               Navigation
             </div>
           </div>
 
           {/* Navigation Links */}
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 w-full">
             {navigationList.map((item) => (
-              <Link href={item.link} key={item.link} className="no-underline">
-                <div className="flex items-center gap-4 hover:bg-[#181C25] hover:text-white rounded-lg text-[#935BF0] px-2 py-2">
+              <Link
+                href={item.link}
+                key={item.link}
+                className="no-underline w-full"
+              >
+                <div
+                  className={`flex items-center gap-4 hover:bg-[#181C25] hover:text-white rounded-lg px-2 py-2 w-full ${
+                    pathname === item.link
+                      ? "bg-[#935BF0] text-black"
+                      : "text-[#935BF0]"
+                  }`}
+                >
                   <div className="flex justify-center w-8">{item.icon}</div>
-                  <div
-                    className={`whitespace-nowrap transition-opacity duration-200 ${
-                      isSidebarOpen ? "opacity-100 delay-200" : "opacity-0"
-                    }`}
-                  >
-                    {item.name}
-                  </div>
+                  {isSidebarOpen && (
+                    <div
+                      className={`whitespace-nowrap transition-opacity duration-200 ${
+                        isSidebarOpen ? "opacity-100 delay-200" : "opacity-0"
+                      }`}
+                    >
+                      {item.name}
+                    </div>
+                  )}
                 </div>
               </Link>
             ))}
           </div>
 
           {/* Create Note Button */}
-          <Link href="/notes/new" className="no-underline">
+          <Link href="/notes/new" className="no-underline w-full">
             <Button
               className={`cursor-pointer flex items-center gap-2 text-black bg-[#9965F1] px-2 py-2 rounded-lg w-full hover:text-white
                 ${isSidebarOpen ? "justify-start" : "justify-center"}
@@ -125,8 +151,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </div>
 
       {/* Main Content Area */}
-      <div className="flex-1 flex flex-col">
-        <div className="flex justify-between bg-[#11151C] p-4">
+      <div className="flex-1 flex flex-col overflow-x-hidden">
+        <div className="flex justify-between p-4">
           <PanelLeft
             className="text-white cursor-pointer hover:bg-[#2D1E47] hover:text-[#D1B9F8] p-1 h-8 w-8 rounded-md"
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
