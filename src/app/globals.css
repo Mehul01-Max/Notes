@@ -257,3 +257,29 @@
 html, body {
   background-color: #111219;
 }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #11151C;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #935BF0;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A578F2;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #935BF0 #11151C;
+}

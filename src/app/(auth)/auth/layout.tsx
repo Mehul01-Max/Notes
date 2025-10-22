@@ -3,7 +3,7 @@ import React from "react";
 import heroImage from "@/assets/hero-bg.jpg";
 import logo from "@/assets/logo.png";
 import { Brain, Shield, Zap } from "lucide-react";
-import Image from "next/image";
+// import Image from "next/image";
 export default function AuthLayout({
   children,
 }: {
@@ -30,7 +30,7 @@ export default function AuthLayout({
                 boxShadow: "var(--shadow-glow)",
               }}
             >
-              <Image src={logo.src} alt="Logo" className="w-8 h-8" />
+              <img src={logo.src} alt="Logo" className="w-8 h-8" />
             </div>
             <div className="flex flex-col">
               <div className="font-bold text-2xl text-white">Zettelkasten</div>

@@ -14,7 +14,7 @@ import Link from "next/link";
 import { SignedIn, UserButton } from "@clerk/nextjs";
 import logo from "@/assets/logo.png";
 import { usePathname } from "next/navigation";
-import Image from "next/image";
+// import Image from "next/image";
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const pathname = usePathname();
@@ -59,7 +59,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 boxShadow: "var(--shadow-glow)",
               }}
             >
-              <Image src={logo.src} alt="Logo" className="w-8 h-8" />
+              <img src={logo.src} alt="Logo" className="w-8 h-8" />
             </div>
             <div
               className={`whitespace-nowrap transition-opacity duration-200 ${
