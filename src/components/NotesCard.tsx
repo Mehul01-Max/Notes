@@ -1,15 +1,25 @@
+"use client";
 import React from "react";
 import { timeAgo } from "@/lib/timeAgo";
+import { useRouter } from "next/navigation";
 type NotesCardProps = {
   title: string;
   tags?: string[];
+  id: string;
   created_at: Date;
 };
 
-function NotesCard({ title, tags, created_at }: NotesCardProps) {
+function NotesCard({ title, tags, id, created_at }: NotesCardProps) {
+  const router = useRouter();
+  function handleClick() {
+    router.push(`/note/${id}`);
+  }
   return (
-    <div className="p-4 rounded-md cursor-pointer bg-[#11151C] border border-[#201C31] hover:bg-[#151620] hover:border-[#2E244A] flex flex-col gap-4">
-      <div className="text-xl text-white hover:text-[#935BF0] font-bold">
+    <div
+      className="p-4 rounded-md cursor-pointer bg-[#11151C] border border-[#201C31] hover:bg-[#151620] hover:border-[#2E244A] flex flex-col gap-4"
+      onClick={handleClick}
+    >
+      <div className="text-xl text-white hover:text-[#935BF0] font-bold truncate">
         {title}
       </div>
       <div className="flex justify-between items-center">

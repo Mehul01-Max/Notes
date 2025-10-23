@@ -53,7 +53,7 @@ export function useNotes() {
         fetchNotes();
     };
 
-    const editNote = async (id: string, title: string, body: string, tags: string[]) => {
+    const editNote = async (id: string, title: string, body: string | undefined, tags: string[]) => {
         await axios.put(
             `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/notes/${id}`,
             { title, body, tags },

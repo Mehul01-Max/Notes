@@ -119,7 +119,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </div>
 
           {/* Create Note Button */}
-          <Link href="/notes/new" className="no-underline w-full">
+          <Link href="/note/new" className="no-underline w-full">
             <Button
               className={`cursor-pointer flex items-center gap-2 text-black bg-[#9965F1] px-2 py-2 rounded-lg w-full hover:text-white
                 ${isSidebarOpen ? "justify-start" : "justify-center"}

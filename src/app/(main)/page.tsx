@@ -28,7 +28,7 @@ function Page() {
             graph with the power of the Zettelkasten method.
           </div>
           <div className="flex gap-2">
-            <Link href="/notes/new">
+            <Link href="/note/new">
               <Button className="text-black bg-[#AE85F4] px-4 py-2 rounded-md cursor-pointer hover:text-white">
                 <Plus /> Create First Note
               </Button>
@@ -57,6 +57,7 @@ function Page() {
                 title={note.title}
                 tags={note.tags}
                 created_at={note.created_at}
+                id={note.id}
                 key={note.id}
               />
             );

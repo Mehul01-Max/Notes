@@ -14,7 +14,7 @@ function Page() {
           <div className="text-[#AE85F4] font-bold text-3xl">All Notes</div>
           <div className="text-[#99A3B4]">Manage your knowledge collection</div>
         </div>
-        <Link href="/notes/new">
+        <Link href="/note/new">
           <Button className="text-black bg-[#AE85F4] px-4 py-2 rounded-md cursor-pointer hover:text-white">
             <Plus /> new Note
           </Button>
@@ -27,6 +27,7 @@ function Page() {
               title={note.title}
               tags={note.tags}
               created_at={note.created_at}
+              id={note.id}
               key={note.id}
             />
           );
